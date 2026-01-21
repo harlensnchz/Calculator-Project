@@ -48,7 +48,16 @@ func main() {
 		// Now the switch only runs if the operator is guaranteed to be valid
 		switch operator {
 		case "+":
-			fmt.Printf("Result: %.4f + %.4f = %.4f\n", num1, num2, num1+num2)
+			fmt.Printf("Result: %.2f + %.2f = %.2f\n", num1, num2, num1+num2)
+			// ... (rest of your cases)
+		case "-":
+			fmt.Printf("Result: %.2f - %.2f = %.2f\n", num1, num2, num1-num2)
+			// ... (rest of your cases)
+		case "*":
+			fmt.Printf("Result: %.2f * %.2f = %.2f\n", num1, num2, num1*num2)
+			// ... (rest of your cases)
+		case "/":
+			fmt.Printf("Result: %.2f / %.2f = %.2f\n", num1, num2, num1/num2)
 			// ... (rest of your cases)
 		}
 	}
