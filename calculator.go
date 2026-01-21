@@ -29,18 +29,23 @@ func main() {
 		num1 := getValidNumber("Enter first number: ")
 
 		var operator string
-		fmt.Print("Enter operator (+, -, *, /, or 'exit' to quit): ")
-		fmt.Scanln(&operator)
+		for {
+			fmt.Print("Enter operator (+, -, *, /, or 'exit' to quit): ")
+			fmt.Scanln(&operator)
 
-		if operator == "exit" {
-			break
+			// Check if the operator is one of the valid choices
+			if operator == "+" || operator == "-" || operator == "*" || operator == "/" || operator == "exit" {
+				break // Valid input received, exit the operator loop
+			}
+
+			// If not valid, show error and the loop repeats the operator prompt
+			fmt.Println("Error: Invalid operator! Please enter +, -, *, or /.")
 		}
 
-		// --- NEW VALIDATION LOGIC ---
-		// Check if the operator is valid BEFORE asking for the second number
-		if operator != "+" && operator != "-" && operator != "*" && operator != "/" {
-			fmt.Println("Error: Invalid operator! Please enter +, -, *, or /.")
-			continue // This skips the rest of the loop and restarts from the top
+		// Check if they want to quit the entire program
+		if operator == "exit" {
+			fmt.Println("Closing program...")
+			break // Breaks the outer main loop
 		}
 
 		num2 := getValidNumber("Enter second number: ")
