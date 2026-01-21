@@ -1,8 +1,8 @@
-🧮 Go CLI Calculator
+Go CLI Calculator
 
 A terminal-based calculator built with Go (Golang) that prioritizes data integrity and a smooth user experience. This project demonstrates modular function design, input buffer management, and strict control flow validation.
 
-🌟 Key Features
+Key Features
 
 Modular Validation: Includes a custom getValidNumber function that uses a for loop to ensure the program only proceeds when numeric data is provided.
 
@@ -14,7 +14,7 @@ Persistent Session: Wrapped in a global for loop with a dedicated exit command t
 
 Formatted Output: Uses %.2f formatting to provide clean, readable results rounded to two decimal places.
 
-🛠️ Technical Implementation
+Technical Implementation
 
 Input Validation Logic
 The program uses the err return value from fmt.Scanln to detect data type mismatches:
@@ -37,7 +37,7 @@ If Invalid: The program triggers a continue (skipping the num2 prompt).
 
 If Valid: The program proceeds to capture the second operand and execute the switch logic.
 
-🚀 How to Run
+How to Run
 
 Ensure you have Go installed on your system.
 
