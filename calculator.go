@@ -25,14 +25,14 @@ func main() {
 	// 4. Logic to perform the calculation
 	switch operator {
 	case "+":
-		fmt.Printf("Result: %.2f + %.2f = %.2f\n", num1, num2, num1+num2)
+		fmt.Printf("Result: %.4f + %.4f = %.4f\n", num1, num2, num1+num2)
 	case "-":
-		fmt.Printf("Result: %.2f - %.2f = %.2f\n", num1, num2, num1-num2)
+		fmt.Printf("Result: %.4f - %.4f = %.4f\n", num1, num2, num1-num2)
 	case "*":
-		fmt.Printf("Result: %.2f * %.2f = %.2f\n", num1, num2, num1*num2)
+		fmt.Printf("Result: %.4f * %.4f = %.4f\n", num1, num2, num1*num2)
 	case "/":
 		if num2 != 0 {
-			fmt.Printf("Result: %.2f / %.2f = %.2f\n", num1, num2, num1/num2)
+			fmt.Printf("Result: %.4f / %.4f = %.4f\n", num1, num2, num1/num2)
 		} else {
 			fmt.Println("Undefined.")
 		}
