@@ -70,6 +70,7 @@ func main() {
 				// Perform division
 			}
 		default:
+			fmt.Println("test error.")
 		}
 	}
 }
