@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 )
 
@@ -21,6 +22,24 @@ func getValidNumber(prompt string) float64 {
 		// Clear the buffer to prevent infinite loops
 		var discard string
 		fmt.Scanln(&discard)
+	}
+}
+
+func calculate(num1, num2 float64, operator string) (float64, error) {
+	switch operator {
+	case "+":
+		return num1 + num2, nil
+	case "-":
+		return num1 - num2, nil
+	case "*":
+		return num1 * num2, nil
+	case "/":
+		if num2 == 0 {
+			return 0, errors.New("division by zero")
+		}
+		return num1 / num2, nil
+	default:
+		return 0, errors.New("invalid operator")
 	}
 }
 
@@ -50,7 +69,9 @@ func main() {
 
 		num2 := getValidNumber("Enter second number: ")
 
-		// Now the switch only runs if the operator is guaranteed to be valid
+	}
+
+	// Now the switch only runs if the operator is guaranteed to be valid
 		switch operator {
 		case "+":
 			fmt.Printf("Result: %.2f + %.2f = %.2f\n", num1, num2, num1+num2)
@@ -70,7 +91,7 @@ func main() {
 				// Perform division
 			}
 		default:
-			fmt.Println("test error.")
+			fmt.Println("test.")
 		}
 	}
 }
