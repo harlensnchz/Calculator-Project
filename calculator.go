@@ -62,8 +62,14 @@ func main() {
 			fmt.Printf("Result: %.2f * %.2f = %.2f\n", num1, num2, num1*num2)
 
 		case "/":
-			fmt.Printf("Result: %.2f / %.2f = %.2f\n", num1, num2, num1/num2)
-
+			if num2 == 0 {
+				fmt.Println("Undefined")
+				// Handle division by zero
+			} else {
+				fmt.Printf("Result: %.2f / %.2f = %.2f\n", num1, num2, num1/num2)
+				// Perform division
+			}
+		default:
 		}
 	}
 }
