@@ -69,29 +69,13 @@ func main() {
 
 		num2 := getValidNumber("Enter second number: ")
 
-	}
+		// call the calculate function
+		result, err := calculate(num1, num2, operator)
 
-	// Now the switch only runs if the operator is guaranteed to be valid
-		switch operator {
-		case "+":
-			fmt.Printf("Result: %.2f + %.2f = %.2f\n", num1, num2, num1+num2)
-
-		case "-":
-			fmt.Printf("Result: %.2f - %.2f = %.2f\n", num1, num2, num1-num2)
-
-		case "*":
-			fmt.Printf("Result: %.2f * %.2f = %.2f\n", num1, num2, num1*num2)
-
-		case "/":
-			if num2 == 0 {
-				fmt.Println("Undefined")
-				// Handle division by zero
-			} else {
-				fmt.Printf("Result: %.2f / %.2f = %.2f\n", num1, num2, num1/num2)
-				// Perform division
-			}
-		default:
-			fmt.Println("test.")
+		if err != nil {
+			fmt.Println("Error:", err)
+		} else {
+			fmt.Printf("Result: %.2f %s %.2f = %.2f\n", num1, operator, num2, result)
 		}
 	}
 }
