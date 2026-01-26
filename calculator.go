@@ -1,11 +1,12 @@
-package main
+package main // package declaration
 
-import (
+import ( // import necessary packages
 	"errors"
 	"fmt"
 )
 
 // getValidNumber is a custom function that handles input validation
+// helper function to get a valid number from user input
 func getValidNumber(prompt string) float64 {
 	for {
 		var num float64
@@ -25,6 +26,7 @@ func getValidNumber(prompt string) float64 {
 	}
 }
 
+// logic function to perform calculations
 func calculate(num1, num2 float64, operator string) (float64, error) {
 	switch operator {
 	case "+":
@@ -43,6 +45,7 @@ func calculate(num1, num2 float64, operator string) (float64, error) {
 	}
 }
 
+// entry point of the program
 func main() {
 	for {
 		num1 := getValidNumber("Enter first number: ")
