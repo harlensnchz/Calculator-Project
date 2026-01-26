@@ -40,6 +40,11 @@ func calculate(num1, num2 float64, operator string) (float64, error) {
 			return 0, errors.New("division by zero")
 		}
 		return num1 / num2, nil
+	case "%":
+		if num2 == 0 {
+			return 0, errors.New("modulus by zero")
+		}
+		return float64(int(num1) % int(num2)), nil
 	default:
 		return 0, errors.New("invalid operator")
 	}
@@ -52,11 +57,11 @@ func main() {
 
 		var operator string
 		for {
-			fmt.Print("Enter operator (+, -, *, /, or 'exit' to quit): ")
+			fmt.Print("Enter operator (+, -, *, /, %, or 'exit' to quit): ")
 			fmt.Scanln(&operator)
 
 			// Check if the operator is one of the valid choices
-			if operator == "+" || operator == "-" || operator == "*" || operator == "/" || operator == "exit" {
+			if operator == "+" || operator == "-" || operator == "*" || operator == "/" || operator == "%" || operator == "exit" {
 				break // Valid input received, exit the operator loop
 			}
 
