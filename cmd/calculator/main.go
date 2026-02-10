@@ -1,10 +1,9 @@
 package main
 
 import (
+	"calculator/internal/arithmetic"
+	"calculator/internal/storage"
 	"fmt"
-
-	"github.com/harlensnchz/calculator-project/internal/arithmetic"
-	"github.com/harlensnchz/calculator-project/internal/storage"
 )
 
 var historyList []storage.Calculation
