@@ -32,3 +32,15 @@ func SaveHistory(history []Calculation) {
 		fmt.Println("Error saving history:", err)
 	}
 }
+
+func ShowHistory(history []Calculation) {
+	fmt.Println("\n--- Calculation History ---")
+	if len(history) == 0 {
+		fmt.Println("No history found.")
+		return
+	}
+	for i, c := range history {
+		fmt.Printf("[%d] %.2f %s %.2f = %.2f\n", i+1, c.FirstNum, c.Operator, c.SecondNum, c.Result)
+	}
+	fmt.Println("---------------------------")
+}
