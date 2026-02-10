@@ -10,5 +10,11 @@
     "operator": "+",
     "second_num": 2,
     "result": 3
+  },
+  {
+    "first_num": 1,
+    "operator": "-",
+    "second_num": 2,
+    "result": -1
   }
 ]
