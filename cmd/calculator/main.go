@@ -27,10 +27,10 @@ func main() {
 
 	for {
 		fmt.Println("\n=== CALCULATOR MENU ===")
-		fmt.Println("1. Use Calculator")
+		fmt.Println("\n1. Use Calculator")
 		fmt.Println("2. View History")
 		fmt.Println("3. Exit")
-		fmt.Print("Select an option: ")
+		fmt.Print("\nSelect an option: ")
 
 		var choice string
 		fmt.Scanln(&choice)
