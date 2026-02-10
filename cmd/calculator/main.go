@@ -26,7 +26,7 @@ func main() {
 	historyList := storage.LoadHistory() //
 
 	for {
-		fmt.Println("\n=== CALCULATOR MENU ===")
+		fmt.Println("\n\n=== CALCULATOR MENU ===")
 		fmt.Println("\n1. Use Calculator")
 		fmt.Println("2. View History")
 		fmt.Println("3. Exit")
@@ -44,7 +44,7 @@ func main() {
 			fmt.Scanln()
 		case "3":
 			storage.SaveHistory(historyList)
-			fmt.Println("Goodbye!")
+			fmt.Println("Thank you for using the calculator!")
 			return
 		default:
 			fmt.Println("Invalid choice, please try again.")
