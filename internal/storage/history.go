@@ -34,13 +34,15 @@ func SaveHistory(history []Calculation) {
 }
 
 func ShowHistory(history []Calculation) {
-	fmt.Println("\n--- Calculation History ---")
+	fmt.Println("\n--- ALL SAVED CALCULATIONS ---")
 	if len(history) == 0 {
-		fmt.Println("No history found.")
+		fmt.Println("No history found in data/history.json.")
 		return
 	}
-	for i, c := range history {
-		fmt.Printf("[%d] %.2f %s %.2f = %.2f\n", i+1, c.FirstNum, c.Operator, c.SecondNum, c.Result)
+
+	// Iterating through the history slice you loaded at startup
+	for i, entry := range history {
+		fmt.Printf("[%d] %.2f %s %.2f = %.2f\n", i+1, entry.FirstNum, entry.Operator, entry.SecondNum, entry.Result)
 	}
-	fmt.Println("---------------------------")
+	fmt.Println("------------------------------")
 }
