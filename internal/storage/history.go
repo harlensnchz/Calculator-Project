@@ -27,7 +27,6 @@ func LoadHistory() []Calculation {
 	return history
 }
 
-// Ensure this starts with a Capital 'S'
 func SaveHistory(history []Calculation) {
 	jsonData, _ := json.MarshalIndent(history, "", "  ")
 	err := os.WriteFile("data/history.json", jsonData, 0644)
