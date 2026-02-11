@@ -28,10 +28,19 @@ func LoadHistory() []Calculation {
 }
 
 func SaveHistory(history []Calculation) {
-	jsonData, _ := json.MarshalIndent(history, "", "  ")
-	err := os.WriteFile("data/history.json", jsonData, 0644)
+	// 1. Capture the error instead of using '_'
+	jsonData, err := json.MarshalIndent(history, "", "  ")
+	if err != nil {
+		fmt.Println("Error formatting JSON:", err)
+		return
+	}
+
+	// 2. Write the validated data
+	err = os.WriteFile("data/history.json", jsonData, 0644)
 	if err != nil {
 		fmt.Println("Error saving history:", err)
+	} else {
+		fmt.Println("History successfully saved to data/history.json") // Verification check
 	}
 }
 
