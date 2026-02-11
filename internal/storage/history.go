@@ -24,7 +24,12 @@ func LoadHistory() []Calculation {
 		return []Calculation{}
 	}
 
-	json.Unmarshal(fileData, &history)
+	// Capture the error here to know if the file is corrupted
+	err = json.Unmarshal(fileData, &history)
+	if err != nil {
+		fmt.Println("Warning: History file is corrupted. Starting with empty history.")
+		return []Calculation{}
+	}
 	return history
 }
 
