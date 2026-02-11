@@ -4,10 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
-	"path/filepath"
 )
 
-// Calculation must be defined here and capitalized to be exported
 type Calculation struct {
 	FirstNum  float64 `json:"first_num"`
 	Operator  string  `json:"operator"`
@@ -15,49 +13,46 @@ type Calculation struct {
 	Result    float64 `json:"result"`
 }
 
+// This locks the file to your project folder for GitHub tracking
+func getHistoryPath() string {
+	return `C:\Users\Harlen\Documents\Calculator-Project\data\history.json`
+}
+
 func LoadHistory() []Calculation {
-	os.MkdirAll("data", 0755)
+	path := getHistoryPath()
 	var history []Calculation
-
-	fileData, err := os.ReadFile("data/history.json")
+	fileData, err := os.ReadFile(path)
 	if err != nil {
 		return []Calculation{}
 	}
-
-	// Capture the error here to know if the file is corrupted
-	err = json.Unmarshal(fileData, &history)
-	if err != nil {
-		fmt.Println("Warning: History file is corrupted. Starting with empty history.")
-		return []Calculation{}
-	}
+	json.Unmarshal(fileData, &history)
 	return history
 }
 
 func SaveHistory(history []Calculation) {
-	jsonData, err := json.MarshalIndent(history, "", "  ")
-	if err != nil {
-		fmt.Println("Error encoding JSON:", err)
-		return
-	}
+	path := getHistoryPath()
+	jsonData, _ := json.MarshalIndent(history, "", "  ")
+	os.WriteFile(path, jsonData, 0644)
+}
 
-	// This shows the exact path on your hard drive
-	absPath, _ := filepath.Abs("data/history.json")
-	fmt.Printf("Saving history to: %s\n", absPath)
-
-	err = os.WriteFile("data/history.json", jsonData, 0644)
+// NEW: Clear History Function
+func ClearHistory() {
+	path := getHistoryPath()
+	// Overwrite the file with an empty JSON array
+	err := os.WriteFile(path, []byte("[]"), 0644)
 	if err != nil {
-		fmt.Println("Error writing file:", err)
+		fmt.Println("Error clearing history:", err)
+	} else {
+		fmt.Println("History cleared successfully!")
 	}
 }
 
 func ShowHistory(history []Calculation) {
 	fmt.Println("\n--- ALL SAVED CALCULATIONS ---")
 	if len(history) == 0 {
-		fmt.Println("No history found in data/history.json.")
+		fmt.Println("No history found.")
 		return
 	}
-
-	// Iterating through the history slice you loaded at startup
 	for i, entry := range history {
 		fmt.Printf("[%d] %.2f %s %.2f = %.2f\n", i+1, entry.FirstNum, entry.Operator, entry.SecondNum, entry.Result)
 	}
