@@ -37,13 +37,20 @@ func SaveHistory(history []Calculation) {
 
 // NEW: Clear History Function
 func ClearHistory() {
-	path := getHistoryPath()
-	// Overwrite the file with an empty JSON array
-	err := os.WriteFile(path, []byte("[]"), 0644)
-	if err != nil {
-		fmt.Println("Error clearing history:", err)
+	var confirm string
+	fmt.Print("Are you sure you want to clear all history? (y/n): ")
+	fmt.Scanln(&confirm)
+
+	if confirm == "y" || confirm == "Y" {
+		path := getHistoryPath()
+		err := os.WriteFile(path, []byte("[]"), 0644) // Overwrites with empty list
+		if err != nil {
+			fmt.Println("Error clearing history:", err)
+		} else {
+			fmt.Println("History cleared successfully!")
+		}
 	} else {
-		fmt.Println("History cleared successfully!")
+		fmt.Println("Action cancelled.")
 	}
 }
 

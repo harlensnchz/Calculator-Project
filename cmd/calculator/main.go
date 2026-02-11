@@ -2,6 +2,7 @@ package main
 
 import (
 	"calculator/internal/storage"
+	"calculator/internal/utils"
 	"fmt"
 )
 
@@ -38,6 +39,9 @@ func main() {
 		switch choice {
 		case "1":
 			runCalculator(&historyList)
+			fmt.Println("\nCalculation complete. Press Enter to return to menu...")
+			fmt.Scanln() 
+			utils.ClearScreen()
 		case "2":
 			storage.ShowHistory(historyList)
 			fmt.Print("Press Enter to return to menu...")
