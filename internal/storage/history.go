@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"path/filepath"
 )
 
 // Calculation must be defined here and capitalized to be exported
@@ -28,19 +29,19 @@ func LoadHistory() []Calculation {
 }
 
 func SaveHistory(history []Calculation) {
-	// 1. Capture the error instead of using '_'
 	jsonData, err := json.MarshalIndent(history, "", "  ")
 	if err != nil {
-		fmt.Println("Error formatting JSON:", err)
+		fmt.Println("Error encoding JSON:", err)
 		return
 	}
 
-	// 2. Write the validated data
+	// This shows the exact path on your hard drive
+	absPath, _ := filepath.Abs("data/history.json")
+	fmt.Printf("Saving history to: %s\n", absPath)
+
 	err = os.WriteFile("data/history.json", jsonData, 0644)
 	if err != nil {
-		fmt.Println("Error saving history:", err)
-	} else {
-		fmt.Println("History successfully saved to data/history.json") // Verification check
+		fmt.Println("Error writing file:", err)
 	}
 }
 
