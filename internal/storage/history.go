@@ -15,11 +15,14 @@ type Calculation struct {
 }
 
 func LoadHistory() []Calculation {
+	os.MkdirAll("data", 0755)
 	var history []Calculation
+
 	fileData, err := os.ReadFile("data/history.json")
 	if err != nil {
 		return []Calculation{}
 	}
+
 	json.Unmarshal(fileData, &history)
 	return history
 }
