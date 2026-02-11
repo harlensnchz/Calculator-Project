@@ -37,17 +37,20 @@ func main() {
 
 		switch choice {
 		case "1":
-			runCalculator(&historyList) // Now this function exists!
+			runCalculator(&historyList)
 		case "2":
 			storage.ShowHistory(historyList)
 			fmt.Print("Press Enter to return to menu...")
 			fmt.Scanln()
-		case "3":
+		case "3": // NEW: Clear History Option
+			storage.ClearHistory()
+			historyList = []storage.Calculation{} // Reset the list in memory too!
+			fmt.Print("Press Enter to return to menu...")
+			fmt.Scanln()
+		case "4":
 			storage.SaveHistory(historyList)
 			fmt.Println("Thank you for using the calculator!")
 			return
-		default:
-			fmt.Println("Invalid choice, please try again.")
 		}
 	}
 }
